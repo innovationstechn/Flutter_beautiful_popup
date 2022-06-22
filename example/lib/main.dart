@@ -57,6 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
       return BeautifulPopup(
         context: context,
         template: template,
+        imageWidget: Image.asset('images/nihsspopup.png',fit: BoxFit.fill),
       );
     }).toList();
   }

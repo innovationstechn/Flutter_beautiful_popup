@@ -42,12 +42,16 @@ export 'templates/RedPacket.dart';
 
 class BeautifulPopup {
   BuildContext _context;
+  Image? image;
+
   BuildContext get context => _context;
 
   Type? _template;
+
   Type? get template => _template;
 
   BeautifulPopupTemplate Function(BeautifulPopup options)? _build;
+
   BeautifulPopupTemplate get instance {
     final build = _build;
     if (build != null) return build(this);
@@ -65,7 +69,9 @@ class BeautifulPopup {
       case TemplateThumb:
         return TemplateThumb(this);
       case TemplateGift:
-        return TemplateGift(this);
+        return TemplateGift(
+          this,
+        );
       case TemplateCamera:
         return TemplateCamera(this);
       case TemplateNotification:
@@ -87,6 +93,7 @@ class BeautifulPopup {
   }
 
   ui.Image? _illustration;
+
   ui.Image? get illustration => _illustration;
 
   dynamic title = '';
@@ -97,11 +104,13 @@ class BeautifulPopup {
 
   Color? primaryColor;
 
-  BeautifulPopup({
-    required BuildContext context,
-    required Type? template,
-  })   : _context = context,
-        _template = template {
+  BeautifulPopup(
+      {required BuildContext context,
+      required Type? template,
+      Image? imageWidget})
+      : _context = context,
+        _template = template,
+        image = imageWidget {
     primaryColor = instance.primaryColor; // Get the default primary color.
   }
 
